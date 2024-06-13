@@ -1,35 +1,28 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import buttonsJson from "./assets/buttons.json"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const buttons = buttonsJson
+
+  // App logic: each of the number for the operation will be saved in a state. The index is going to dictate on which of the state we operate:
+  // index 0: firstNumber    index 1: Second number
+  // index is going to be 0 only on a clean operation; in chained operations we will always be index 1, since index 0 is going to be the result
+  // when we do an operation, it takes in consideration operator(firstNumber,secondNumber), changes the value of the first number to the result
+  // and resets the second number and the operator
+  const [numberIndex, setNumberIndex] = useState("0")
+  const [firstNumber, setFirstNumber] = useState("0")
+  const [secondNumber, setSecondNumber] = useState("")
+  const [operator, setOperator] = useState("")
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
 }
+
+
+
+
 
 export default App
