@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import buttonsJson from "./assets/buttons.json"
+import NumberButtons from "./assets/components/NumberButtons"
 
 function App() {
   const buttons = buttonsJson
@@ -13,10 +14,29 @@ function App() {
   const [firstNumber, setFirstNumber] = useState("0")
   const [secondNumber, setSecondNumber] = useState("")
   const [operator, setOperator] = useState("")
+  let operatorSymbol;
+  operatorSymbol = operator? buttons.operators.find(e=> e.id==operator).display : ""
 
   return (
     <>
+      <div className='calculator-wrapper'>
+        <div className='display-wrapper'>
+          <input id='display' type="text" value={`${firstNumber}${operatorSymbol}${secondNumber}`} disabled />
+        </div>
+        <div className='button-wrapper'>
+          <section className='number-wrapper'>
+            {buttons.numbers.map(e =>
+              <NumberButtons
+                key={e.button}
+                number={e}
+                index={numberIndex}
+                firstNumber={firstNumber} setFirstNumber={setFirstNumber}
+                secondNumber={secondNumber} setSecondNumber={setSecondNumber}
+              />)}
+          </section>
+        </div>
 
+      </div>
     </>
   )
 }
