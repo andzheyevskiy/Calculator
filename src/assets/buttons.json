@@ -65,11 +65,11 @@
         {
             "button": "-",
             "display": "-",
-            "id": "substract"
+            "id": "subtract"
         },
         {
             "button": "*",
-            "display": "X",
+            "display": "x",
             "id": "multiply"
         },
         {
