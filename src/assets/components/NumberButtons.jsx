@@ -21,17 +21,18 @@ function NumberButtons(props) {
 
         //Runs only in case regex test is true
         if (result) {
-            if (props.index == 0) {
-                props.firstNumber != "0" || props.firstNumber != "-0" || props.number.button == "." ?
-                    props.setFirstNumber(e => `${e}${props.number.button}`) :
-                    props.setFirstNumber(`${negative}${props.number.button}`)
+            if (props.index == "0") {
+                // Case for first number
+                (props.firstNumber == "0" || props.firstNumber == "-0") && props.number.button != "." ?
+                    props.setFirstNumber(`${negative}${props.number.button}`) :
+                    props.setFirstNumber(e => `${e}${props.number.button}`)
             } else {
-                props.secondNumber != "0" || props.secondNumber != "0" || props.number.button == "." ?
-                    props.setSecondNumber(e => `${e}${props.number.button}`) :
-                    props.setSecondNumber(`${negative}${props.number.button}`)
+                // Case for second number
+                (props.secondNumber == "0" || props.secondNumber == "-0") && props.number.button != "." ?
+                    props.setSecondNumber(`${negative}${props.number.button}`) :
+                    props.setSecondNumber(e => `${e}${props.number.button}`)
             }
         }
-
     }
     //=================================================//
 
