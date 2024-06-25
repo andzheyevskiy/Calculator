@@ -15,11 +15,10 @@ function App() {
   const [firstNumber, setFirstNumber] = useState("0")
   const [secondNumber, setSecondNumber] = useState("")
   const [operator, setOperator] = useState("")
-  let operatorSymbol= operator? buttons.operators.find(e=> e.id==operator).display : ""
+  let operatorSymbol = operator ? buttons.operators.find(e => e.id == operator).display : ""
 
   return (
-    <>
-      <div className='calculator-wrapper'>
+    <div className='calculator-wrapper'>
         <div className='display-wrapper'>
           <input id='display' type="text" value={`${firstNumber}${operatorSymbol}${secondNumber}`} disabled />
         </div>
@@ -33,31 +32,28 @@ function App() {
                 firstNumber={firstNumber} setFirstNumber={setFirstNumber}
                 secondNumber={secondNumber} setSecondNumber={setSecondNumber}
               />)}
+            <ClearButton
+              key={buttons.clear.button}
+              number={buttons.clear}
+              setIndex={setNumberIndex}
+              setFirstNumber={setFirstNumber}
+              setSecondNumber={setSecondNumber}
+              setOperator={setOperator}
+            />
           </section>
           <section className='operators-wrapper'>
-            {buttons.operators.map(e => 
+            {buttons.operators.map(e =>
               <OperatorButtons
-              key={e.button}
-              number={e}
-              index={numberIndex} setIndex={setNumberIndex}
-              firstNumber={firstNumber} setFirstNumber={setFirstNumber}
-              secondNumber={secondNumber} setSecondNumber={setSecondNumber}
-              operator={operator} setOperator={setOperator}
+                key={e.button}
+                number={e}
+                index={numberIndex} setIndex={setNumberIndex}
+                firstNumber={firstNumber} setFirstNumber={setFirstNumber}
+                secondNumber={secondNumber} setSecondNumber={setSecondNumber}
+                operator={operator} setOperator={setOperator}
               />)}
-          </section>
-          <section className='clear-btn'>
-            <ClearButton
-            key={buttons.clear.button}
-            number={buttons.clear}
-            setIndex={setNumberIndex}
-            setFirstNumber={setFirstNumber}
-            setSecondNumber={setSecondNumber}
-            setOperator={setOperator}
-              />
           </section>
         </div>
       </div>
-    </>
   )
 }
 
