@@ -20,6 +20,8 @@ function OperatorButtons(props) {
         const negativeBtn = props.number.button == "+" || props.number.button == "-"
         if (props.operator && changable && negativeBtn) {
             setSymbol()
+        } else if (props.number.id == "equals" && props.secondNumber == "") {
+            equalsOnIndexOne()
         } else {
             operate()
         }
@@ -37,6 +39,9 @@ function OperatorButtons(props) {
             // Sets operator to plus in case of replaced numbers
             props.setOperator("add")
         }
+    }
+    function equalsOnIndexOne() {
+        props.setFirstNumber(props.firstNumber ? props.firstNumber : "0")
     }
 
     function operate() {
