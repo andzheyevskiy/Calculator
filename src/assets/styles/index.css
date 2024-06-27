@@ -2,7 +2,12 @@ html {
     background: linear-gradient(rgb(106, 106, 106), rgb(218, 218, 218));
     height: 100vh;
 }
-
+h1{
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+    margin: 20px auto;
+}
 .calculator-wrapper {
     width: 95%;
     margin-left: auto;

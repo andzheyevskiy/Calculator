@@ -18,6 +18,8 @@ function App() {
   let operatorSymbol = operator ? buttons.operators.find(e => e.id == operator).display : ""
 
   return (
+    <>
+    <h1>React Calculator</h1>
     <div className='calculator-wrapper'>
         <div className='display-wrapper'>
           <input id='display' type="text" value={`${firstNumber}${operatorSymbol}${secondNumber}`} disabled />
@@ -54,6 +56,7 @@ function App() {
           </section>
         </div>
       </div>
+      </>
   )
 }
 
