@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 function OperatorButtons(props) {
     // Doc
     /*         props:
@@ -78,6 +80,15 @@ function OperatorButtons(props) {
             props.setIndex("1")
         }
     }
+
+    function preOperateEventListener(event) {
+        if(event.key === props.number.button){preOperate()}        
+    }
+    //===========================================//
+    useEffect(()=>{
+        document.addEventListener("keydown", preOperateEventListener)
+        return () => document.removeEventListener("keydown",preOperateEventListener)
+    })
     //===========================================//
     return (
         <button id={props.number.id} onClick={preOperate}>{props.number.display}</button>

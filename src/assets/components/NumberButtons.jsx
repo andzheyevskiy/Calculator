@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 function NumberButtons(props) {
     // Doc
     /*     props:
@@ -34,8 +36,16 @@ function NumberButtons(props) {
             }
         }
     }
-    //=================================================//
 
+    function addNumberEventListener(event) {
+        if(event.key === props.number.button){addNumber()}
+    }
+    //=================================================//
+    useEffect(()=>{
+        document.addEventListener("keydown", addNumberEventListener)
+        return () => document.removeEventListener("keydown",addNumberEventListener)
+    })
+    //=================================================//
     return (
         <button id={props.number.id} onClick={addNumber}>{props.number.display}</button>
     )

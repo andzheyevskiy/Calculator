@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 function ClearButton(props) {
     // Doc
     /*     props:
@@ -15,8 +17,17 @@ function ClearButton(props) {
         props.setFirstNumber("0")
         props.setSecondNumber("")
         props.setOperator("")
+    }  
+
+    function clearEventListener(event) {
+        if(event.key === "Backspace" || event.key === "Delete" ){clear()}
     }
 
+    //==============================/
+    useEffect(()=>{
+        document.addEventListener("keydown", clearEventListener)
+        return () => document.removeEventListener("keydown",clearEventListener)
+    })
     //==============================/
     return (
         <button id={props.number.id} onClick={clear}>{props.number.display}</button>
