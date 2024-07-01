@@ -54,18 +54,20 @@ function OperatorButtons(props) {
         // if there is a second number, make the operation depending on operator
         else {
             let finalNumber
+            // If no number is provided after the minus symbol. Is is asumed to be 0
+            let secondNumber = props.secondNumber=="-"? 0 : props.secondNumber
             switch (props.operator) {
                 case "add":
-                    finalNumber = Number(props.firstNumber) + Number(props.secondNumber)
+                    finalNumber = Number(props.firstNumber) + Number(secondNumber)
                     break
                 case "subtract":
-                    finalNumber = props.firstNumber - props.secondNumber
+                    finalNumber = props.firstNumber - secondNumber
                     break
                 case "multiply":
-                    finalNumber = props.firstNumber * props.secondNumber
+                    finalNumber = props.firstNumber * secondNumber
                     break
                 case "divide":
-                    finalNumber = props.firstNumber / props.secondNumber
+                    finalNumber = props.firstNumber / secondNumber
                     break
             }
             // Set results to the first number and clean the second number
