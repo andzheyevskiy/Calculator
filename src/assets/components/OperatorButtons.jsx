@@ -33,7 +33,11 @@ function OperatorButtons(props) {
     function setSymbol() {
         // Set symbol to positive or negative
         if (props.number.button == "-") {
-            props.setSecondNumber(props.number.button)
+            if (props.operator == "add") {
+                props.setOperator("subtract")
+            } else {
+                props.setSecondNumber(props.number.button)
+            }
         }
         else {
             // No plus symbol is going to be displayed in case of positive numbers
@@ -55,7 +59,7 @@ function OperatorButtons(props) {
         else {
             let finalNumber
             // If no number is provided after the minus symbol. Is is asumed to be 0
-            let secondNumber = props.secondNumber=="-"? 0 : props.secondNumber
+            let secondNumber = props.secondNumber == "-" ? 0 : props.secondNumber
             switch (props.operator) {
                 case "add":
                     finalNumber = Number(props.firstNumber) + Number(secondNumber)
@@ -84,12 +88,12 @@ function OperatorButtons(props) {
     }
 
     function preOperateEventListener(event) {
-        if(event.key === props.number.button){preOperate()}        
+        if (event.key === props.number.button) { preOperate() }
     }
     //===========================================//
-    useEffect(()=>{
+    useEffect(() => {
         document.addEventListener("keydown", preOperateEventListener)
-        return () => document.removeEventListener("keydown",preOperateEventListener)
+        return () => document.removeEventListener("keydown", preOperateEventListener)
     })
     //===========================================//
     return (
